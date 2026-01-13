@@ -31,7 +31,15 @@ $\omicron$ - worst case scenario (takes all the sevens steps)
 > The focus of this study is to understand the worst case
 > 
 
-### Big O O(n)
+1. **Big O O(n)** - For a given n tasks the program takes n steps to complete the project
+2. **Big O O($n^2$)** - For a given n tasks. The program takes $n^2$ steps to complete the task
+3. **Big O O(1)** - there is only one operation being carried out. Even if N increases there remains only one operation
+4. **Big O O(log n)** - how many times can you divide n steps into 2 parts to find your 1 item
+5. **Big O O(n log n)** - the most efficient sorting algorithm
 
+### Simplifying Big O Notation
 
+1. Drop the constant -- if a program produces m times the output for n tasks. The program runs at O(m * n) simplified to O(n)
+2. Drop the non-dominant -- if the program runs at O($n ^2$ + n) increasing n to a large value affects $n^2$ more than n. So the program runs at O($n^2$)
+3. 
 
