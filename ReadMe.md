@@ -41,5 +41,12 @@ $\omicron$ - worst case scenario (takes all the sevens steps)
 
 1. Drop the constant -- if a program produces m times the output for n tasks. The program runs at O(m * n) simplified to O(n)
 2. Drop the non-dominant -- if the program runs at O($n ^2$ + n) increasing n to a large value affects $n^2$ more than n. So the program runs at O($n^2$)
-3. 
 
+| Operation           | What Happens                                 | Big O |
+| ------------------- | -------------------------------------------- | ----- |
+| `list.append(x)`    | Adds one element to the end                  | O(1)  |
+| `list.pop()`        | Removes the last element                     | O(1)  |
+| `list.insert(i, x)` | Shifts elements to the right after index `i` | O(n)  |
+| `list.pop(i)`       | Shifts elements to the left after index `i`  | O(n)  |
+| `list.index(x)`     | Scans elements until `x` is found            | O(n)  |
+| `list[i]`           | Directly accesses element at index `i`       | O(1)  |
