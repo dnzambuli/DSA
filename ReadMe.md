@@ -50,3 +50,17 @@ $\omicron$ - worst case scenario (takes all the sevens steps)
 | `list.pop(i)`       | Shifts elements to the left after index `i`  | O(n)  |
 | `list.index(x)`     | Scans elements until `x` is found            | O(n)  |
 | `list[i]`           | Directly accesses element at index `i`       | O(1)  |
+
+### Analogy
+
+> O($n^2$) -- loop within a loop
+> 
+> O(n) -- proportional
+> 
+> O(log n) -- divide and conquer
+> 
+> O(1) -- constant
+> 
+
+[big O cheatsheet](https://bigocheatsheet.com)
+
