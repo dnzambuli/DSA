@@ -64,3 +64,23 @@ $\omicron$ - worst case scenario (takes all the sevens steps)
 
 [big O cheatsheet](https://bigocheatsheet.com)
 
+## Linked Lists
+
+Linked lists are made up of Nodes stored in non contiguous memory spaces.
+
+They are more efficient than arrays at insertion at either end. They do perform at O(n) for find by index and find by value 
+
+Linked list nodes are made up of 
+
+1. Value
+2. pointer to the next node
+
+### Initializing a linked list
+
+> **Analogy**
+> 
+> A one element linked list has a node (value and pointer)
+> 
+> The head and tail of this node are the same $\therefore$ node.next is `None`
+> 
+
