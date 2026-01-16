@@ -1,4 +1,4 @@
-a = "kabalstsdffd"
+a = "aabbaa"
 
 a_split = []
 a_len = len(a)
