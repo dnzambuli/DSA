@@ -1,3 +1,6 @@
+from uaclient.data_types import data_list_to_list
+
+
 class Node:
     def __init__(self, value):
         """
@@ -113,6 +116,96 @@ class DoublyLinkedList:
         self.size -= 1
         return temp
 
+    def get(self, index) -> Node:
+        """
+        get the node at a given index
+        :param index:
+        :return:
+        """
+        # edge case: index is less than 0 or geq size of dll
+
+        temp = self.head
+        if index > self.size /2:
+            for _ in range(index):
+                temp = temp.next
+        # edge case: the value is found in an index gt the center
+        else:
+            temp = self.tail
+            for _ in range(self.size -1, index, -1):
+                temp = temp.prev
+        return temp
+
+    def set_value(self, index, value) -> bool:
+        """
+            set the value at a given index to be value
+            :param index:
+            :param value:
+            :return:
+            """
+        target = self.get(index)
+        if target is not None:
+            target.value = value
+            return True
+        return False
+
+    def insert_value(self, index, value) -> bool:
+        """
+            insert a value at a particulat index
+            :param index:
+            :param value:
+            :return:
+            """
+        # edge case: index is negative index is greater than the size
+        if index < 0 or index > self.size:
+            return False
+
+        # edge case: insert at the beginning
+        if index == 0:
+            self.prepend(value)
+
+        # edge case: insert at the end
+        if index == self.size:
+            self.append(value)
+        else:
+            new_node = Node(value)
+            prev = self.get(index -1)
+            after = prev.next
+            new_node.prev = prev
+            new_node.next = after
+            prev.next = new_node
+            after.prev = new_node
+        self.size += 1
+        return True
+
+    def remove(self, index) -> Node:
+        """
+            remove Node at index and return the removed node
+            :param index:
+            :return Node:
+            """
+        # edge case: index is less than 0 or geq size of dll
+        if index < 0 or index >= self.size:
+            return None
+
+        # edge case: remove from start
+        if index == 0:
+            self.pop_first()
+
+        # edge case: remove from the end
+        if index == self.size - 1:
+            self.pop()
+
+        target = self.get(index)
+        target.next.prev = target.prev
+        target.prev.next = target.next
+        target.next = None
+        target.prev = None
+
+        self.size -= 1
+        return target
+
+
+
 # run the first test
 
 # ==========================
@@ -182,13 +275,77 @@ print("\n*******pop first with empty dll*******\n")
 print(test_pop_first.pop_first())
 
 
+# ==========================
+#
+# Testing get
+#
+# ==========================
+
+print("\n=============\ntesting get\n=============\n")
+
+test_get = DoublyLinkedList()
+sample_data = [0, 1, 2, 3]
+for i in sample_data:
+    test_get.append(i)
+
+print("content of the dll: ", test_get)
+print("\nget the value at index 1\n")
+print(test_get.get(1).value)
+print("\nget the value at index 2\n")
+print(test_get.get(2).value)
+
 
 # ==========================
 #
-# Testing get first
+# Testing set
 #
 # ==========================
 
-# print("\n=============\ntesting get\n=============\n")
+print("\n=============\ntesting set\n=============\n")
+
+test_set = DoublyLinkedList()
+sample_data = [0, 1, 2, 3]
+for i in sample_data:
+    test_set.append(i)
+
+print("content of the dll: ", test_set)
+print("\nset the value at index 1 to be 22\n")
+test_set.set_value(1, 22)
+print("content of the dll: ", test_set)
 
 
+# ==========================
+#
+# Testing insert at index
+#
+# ==========================
+
+print("\n=============\ntesting insert at index\n=============\n")
+
+test_insertAt = DoublyLinkedList()
+sample_data = [0, 1, 2, 3]
+for i in sample_data:
+    test_insertAt.append(i)
+
+print("content of the dll: ", test_insertAt)
+print("\nInsert 22 at index 2\n")
+test_insertAt.insert_value(2, 22)
+print("content of the dll: ", test_insertAt)
+
+# ==========================
+#
+# Testing remove at index
+#
+# ==========================
+
+print("\n=============\ntesting remove at index\n=============\n")
+
+test_remove = DoublyLinkedList()
+sample_data = [0, 1, 2, 3]
+for i in sample_data:
+    test_remove.append(i)
+
+print("content of the dll: ", test_remove)
+print("\nRemove value at index 2\n")
+test_remove.remove(2)
+print("content of the dll: ", test_remove)
