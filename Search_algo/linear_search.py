@@ -1,6 +1,8 @@
 def linear_search(arr, value):
     """
     find value in array using linear search
+
+    looks at each value from the start and returns the index of the target 
     
     :param array: a list
     :param value: the target
