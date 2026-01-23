@@ -1,6 +1,3 @@
-from uaclient.data_types import data_list_to_list
-
-
 class Node:
     def __init__(self, value):
         """
